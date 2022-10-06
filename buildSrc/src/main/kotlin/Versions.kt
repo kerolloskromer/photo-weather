@@ -31,7 +31,7 @@ object Versions {
     const val loggingInterceptor = "4.9.0"
 
     // Room
-    const val room = "2.3.0"
+    const val room = "2.4.3"
 
     // Dagger-Hilt
     const val hilt = "2.43.2"
@@ -40,7 +40,7 @@ object Versions {
     const val timber = "4.7.1"
 
     // Leak Canary - memory leak detection
-    const val leakcanary = "2.5"
+    const val leakcanary = "2.9.1"
 
     // UNIT TEST
     const val junit = "4.+"

@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_navigation_to_create_post"
             app:destination="@id/fragment_create_post" />
+
+        <action
+            android:id="@+id/action_navigation_to_post_details"
+            app:destination="@id/fragment_post_details" />
     </fragment>
 
     <fragment
@@ -21,4 +25,15 @@
         android:name="com.kromer.presentation.features.main.create_post.CreatePostFragment"
         android:label="@string/create_post"
         tools:layout="@layout/fragment_create_post" />
+
+    <dialog
+        android:id="@+id/fragment_post_details"
+        android:name="com.kromer.presentation.features.main.posts.details.PostDetailsFragment"
+        android:label="@string/post_details"
+        tools:layout="@layout/fragment_post_details">
+
+        <argument
+            android:name="postId"
+            app:argType="long" />
+    </dialog>
 </navigation>

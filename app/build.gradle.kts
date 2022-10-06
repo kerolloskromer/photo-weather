@@ -63,9 +63,6 @@ dependencies {
     // Kotlin
     implementation(Deps.kotlin)
 
-    // UI
-    implementation(Deps.appCompat)
-
     // Retrofit
     implementation(Deps.retrofit)
     implementation(Deps.converterGson)

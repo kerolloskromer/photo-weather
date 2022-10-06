@@ -1,18 +1,15 @@
-package com.kromer.presentation.features.camera
+package com.kromer.presentation.utils
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.activity.result.ActivityResultLauncher
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
-import com.kromer.presentation.utils.FileUtils
-import java.io.File
 import java.io.IOException
 
 
-object Camera {
+object CameraUtils {
     private var currentPhotoPath: String = ""
 
     fun dispatchTakePictureIntent(
@@ -31,9 +28,8 @@ object Camera {
                 }
                 // Continue only if the File was successfully created
                 photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
+                    val photoURI: Uri = FileUtils.getUriForFile(
                         fragment.requireContext(),
-                        "${fragment.requireContext().packageName}.fileprovider",
                         it
                     )
                     currentPhotoPath = it.absolutePath

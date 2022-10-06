@@ -16,5 +16,6 @@ class CreatePostViewModel @Inject constructor(
 
     fun getWeather() = invokeUseCase { getWeatherUseCase(Unit) }
 
-    fun addPost(photoPath:String) = invokeUseCase { addPostUseCase(Post(photoPath)) }
+    fun addPost(originalPhotoPath: String, photoPath: String) =
+        invokeUseCase { addPostUseCase(Post(0, originalPhotoPath, photoPath)) }
 }

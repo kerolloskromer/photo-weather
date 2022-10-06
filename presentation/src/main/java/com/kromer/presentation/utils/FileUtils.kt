@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.Handler
@@ -12,6 +13,7 @@ import android.os.Looper
 import android.view.PixelCopy
 import android.view.View
 import android.view.Window
+import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -27,6 +29,14 @@ object FileUtils {
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */
             storageDir /* directory */
+        )
+    }
+
+    fun getUriForFile(context: Context, file: File): Uri {
+        return FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.fileprovider",
+            file
         )
     }
 

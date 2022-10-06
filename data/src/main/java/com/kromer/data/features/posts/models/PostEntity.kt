@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class PostEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
+    val originalPhotoPath: String,
     val photoPath: String,
 )

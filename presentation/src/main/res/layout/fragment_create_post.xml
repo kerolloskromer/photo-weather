@@ -37,24 +37,17 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/tv_address"
+                android:id="@+id/tv_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/screen_padding"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/barrier"
+                app:layout_constraintEnd_toStartOf="@id/tv_temperature"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="Cairo, Egypt" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="start"
-                app:constraint_referenced_ids="tv_temperature, tv_description" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Rainy" />
 
             <TextView
                 android:id="@+id/tv_temperature"
@@ -64,21 +57,28 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tv_description"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="10c" />
 
-            <TextView
-                android:id="@+id/tv_description"
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tv_temperature, tv_description" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/screen_padding"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Rainy" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                tools:text="Cairo, Egypt" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

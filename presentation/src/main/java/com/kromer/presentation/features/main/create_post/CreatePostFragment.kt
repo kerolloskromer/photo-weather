@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toUri
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
@@ -18,9 +17,10 @@ import com.kromer.domain.utils.Status
 import com.kromer.presentation.R
 import com.kromer.presentation.base.BaseFragment
 import com.kromer.presentation.databinding.FragmentCreatePostBinding
+import com.kromer.presentation.extensions.getUriForFilePath
 import com.kromer.presentation.extensions.show
 import com.kromer.presentation.extensions.showSnackBar
-import com.kromer.presentation.features.camera.Camera
+import com.kromer.presentation.utils.CameraUtils
 import com.kromer.presentation.utils.FileUtils
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -30,6 +30,7 @@ import java.io.File
 class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
 
     private val viewModel: CreatePostViewModel by viewModels()
+    private var saveMenuItem: MenuItem? = null
 
     private val permissions = arrayOf(
         Manifest.permission.CAMERA,
@@ -55,7 +56,7 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
 
     private val cameraResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            getWeather(Camera.getResult())
+            getWeather(CameraUtils.getResult())
         }
 
     override fun getVBInflater(): (LayoutInflater) -> FragmentCreatePostBinding =
@@ -72,11 +73,13 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_create_post, menu)
+                saveMenuItem = menu.findItem(R.id.action_save)
+                saveMenuItem?.isVisible = false
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
-                    R.id.action_done -> {
+                    R.id.action_save -> {
                         save()
                         true
                     }
@@ -91,7 +94,7 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
     }
 
     private fun openCamera() {
-        Camera.dispatchTakePictureIntent(this, cameraResultLauncher)
+        CameraUtils.dispatchTakePictureIntent(this, cameraResultLauncher)
     }
 
     private fun getWeather(photoPath: String?) {
@@ -114,10 +117,13 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
     }
 
     private fun setData(photoPath: String?, weather: Weather) {
-        binding.ivImage.load(photoPath?.toUri())
-        binding.tvAddress.text = weather.address
-        binding.tvTemperature.text = getString(R.string.degree_celsius, weather.temp)
-        binding.tvDescription.text = weather.description
+        binding.ivImage.load(photoPath?.getUriForFilePath(binding.ivImage.context))
+        binding.tvDescription.text = getString(R.string.weather_condition, weather.description)
+        binding.tvTemperature.text = getString(R.string.temp_degree_celsius, weather.temp)
+        binding.tvAddress.text = getString(R.string.location_address, weather.address)
+
+        // show save button
+        saveMenuItem?.isVisible = true
     }
 
     private fun save() {
@@ -126,7 +132,10 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
     }
 
     private fun addPost(photoFile: File) {
-        viewModel.addPost(photoFile.absolutePath).observe(viewLifecycleOwner) {
+        viewModel.addPost(
+            CameraUtils.getResult(), // originalPhotoPath captured from camera
+            photoFile.absolutePath // edited photo
+        ).observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     showLoading(true)

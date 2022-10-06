@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.kromer.domain.features.posts.models.Post
 import com.kromer.presentation.databinding.ItemPostBinding
 
-class PostsAdapter : ListAdapter<Post, PostViewHolder>(DIFF_CALLBACK) {
+class PostsAdapter(
+    private val onItemClick: (Post) -> Unit,
+    private val onShareClick: (Post) -> Unit,
+) : ListAdapter<Post, PostViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -19,7 +22,7 @@ class PostsAdapter : ListAdapter<Post, PostViewHolder>(DIFF_CALLBACK) {
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onItemClick, onShareClick)
     }
 
     companion object {

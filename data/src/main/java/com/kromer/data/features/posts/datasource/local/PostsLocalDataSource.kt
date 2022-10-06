@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface PostsLocalDataSource {
     suspend fun getPosts(): Flow<List<PostEntity>>
     suspend fun addPost(post: PostEntity)
+    suspend fun getById(id: Long?): PostEntity?
 }

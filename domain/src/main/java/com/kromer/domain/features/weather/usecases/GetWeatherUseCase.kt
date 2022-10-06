@@ -14,6 +14,7 @@ class GetWeatherUseCase(
     override suspend fun invoke(params: Unit): Resource<Weather?> {
         val location = getLocationUseCase(Unit).data
         val weatherRequestParams = location?.let {
+            // For temperature in Celsius use units=metric
             WeatherRequestParams(it.latitude, it.longitude, "metric")
         } ?: WeatherRequestParams(0.0, 0.0, "")
         return repository.getWeather(weatherRequestParams)

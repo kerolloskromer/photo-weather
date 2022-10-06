@@ -9,4 +9,6 @@ class PostsLocalDataSourceImpl(
     override suspend fun getPosts(): Flow<List<PostEntity>> = postsDao.getAll()
 
     override suspend fun addPost(post: PostEntity) = postsDao.insert(post)
+
+    override suspend fun getById(id: Long?): PostEntity? = postsDao.getById(id)
 }

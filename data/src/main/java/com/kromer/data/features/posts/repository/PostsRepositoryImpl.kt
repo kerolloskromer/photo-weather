@@ -20,4 +20,7 @@ class PostsRepositoryImpl(
 
     override suspend fun addPost(post: Post): Resource<Unit> =
         safeCall { postsLocalDataSource.addPost(post.mapToWith(postMapper)) }
+
+    override suspend fun getById(id: Long?): Resource<Post?> =
+        safeCall { postsLocalDataSource.getById(id)?.mapFromWith(postMapper) }
 }

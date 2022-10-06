@@ -2,6 +2,7 @@ package com.kromer.photoweather.di.features.posts
 
 import com.kromer.domain.features.posts.repository.PostsRepository
 import com.kromer.domain.features.posts.usecases.AddPostUseCase
+import com.kromer.domain.features.posts.usecases.GetPostByIdUseCase
 import com.kromer.domain.features.posts.usecases.GetPostsUseCase
 import dagger.Module
 import dagger.Provides
@@ -24,4 +25,10 @@ object DomainModule {
     fun provideAddPostUseCase(
         repository: PostsRepository
     ): AddPostUseCase = AddPostUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideGetPostByIdUseCase(
+        repository: PostsRepository
+    ): GetPostByIdUseCase = GetPostByIdUseCase(repository)
 }

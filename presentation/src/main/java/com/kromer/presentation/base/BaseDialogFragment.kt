@@ -1,7 +1,5 @@
 package com.kromer.presentation.base
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,21 +26,12 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setupViews()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onStart() {
-        super.onStart()
-        dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
     }
 
     protected abstract fun getVBInflater(): (LayoutInflater) -> VB
