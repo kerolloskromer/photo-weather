@@ -11,4 +11,7 @@ java {
 dependencies {
     // Kotlin
     implementation(Deps.kotlin)
+
+    //Coroutines
+    implementation(Deps.coroutines)
 }

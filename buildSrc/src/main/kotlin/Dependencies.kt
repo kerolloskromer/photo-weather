@@ -27,7 +27,6 @@ object Deps {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
-    const val circleimageview = "de.hdodenhof:circleimageview:${Versions.circleimageview}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
 
     // Navigation
@@ -95,10 +94,6 @@ object Deps {
     // Chucker OkHttp Interceptor
     const val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
     const val chuckerNoOp = "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker}"
-
-    // EncryptedSharedPreferences
-    const val encryptedSharedPreferences =
-        "androidx.security:security-crypto:${Versions.encryptedSharedPreferences}"
 
     // Google Location
     const val googleLocation =

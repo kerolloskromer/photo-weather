@@ -3,4 +3,17 @@
 
     <!--common-->
     <string name="error_unknown">Something went wrong!</string>
+
+    <!--create post-->
+    <string name="create_post">Create Post</string>
+    <string name="permissions_error">Permissions are required for core functionality</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    <string name="weather_condition">Weather Condition:\n%s</string>
+    <string name="temp_degree_celsius">Temperature:\n%.2f Celsius</string>
+    <string name="location_address">Location:\n%s</string>
+    <string name="post_details">Post Details</string>
+    <string name="share_text">Check this out! I just took a picture and got all weather details on it</string>
+    <string name="share_via">Share Via</string>
+
 </resources>

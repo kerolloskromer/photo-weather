@@ -15,6 +15,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     compileOptions {
@@ -31,10 +37,18 @@ dependencies {
     // Kotlin
     implementation(Deps.kotlin)
 
+    //Coroutines
+    implementation(Deps.coroutines)
+
     // Retrofit
     implementation(Deps.retrofit)
     implementation(Deps.converterGson)
     implementation(Deps.loggingInterceptor)
+
+    // Room
+    implementation(Deps.roomRuntime)
+    kapt(Deps.roomCompiler)
+    implementation(Deps.roomKtx)
 
     // Timber for logging
     implementation(Deps.timber)
