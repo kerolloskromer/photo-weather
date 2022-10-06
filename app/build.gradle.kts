@@ -63,13 +63,15 @@ dependencies {
     // Kotlin
     implementation(Deps.kotlin)
 
-    // UI
-    implementation(Deps.appCompat)
-
     // Retrofit
     implementation(Deps.retrofit)
     implementation(Deps.converterGson)
     implementation(Deps.loggingInterceptor)
+
+    // Room
+    implementation(Deps.roomRuntime)
+    kapt(Deps.roomCompiler)
+    implementation(Deps.roomKtx)
 
     // Dagger-Hilt
     implementation(Deps.hilt)
@@ -88,9 +90,6 @@ dependencies {
     // Chucker OkHttp Interceptor
     debugImplementation(Deps.chucker)
     releaseImplementation(Deps.chuckerNoOp)
-
-    // EncryptedSharedPreferences
-    implementation(Deps.encryptedSharedPreferences)
 
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

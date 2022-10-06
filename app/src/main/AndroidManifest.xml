@@ -10,10 +10,17 @@
     <!--location-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="true" />
+
+    <!--storage-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <!--camera-->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission
+    <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
 
@@ -36,6 +43,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhotoWeather"
         tools:targetApi="31">
+
+        <activity
+            android:name="com.kromer.presentation.features.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
