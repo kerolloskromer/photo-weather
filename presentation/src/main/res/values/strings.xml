@@ -3,4 +3,12 @@
 
     <!--common-->
     <string name="error_unknown">Something went wrong!</string>
+
+    <!--create post-->
+    <string name="create_post">Create Post</string>
+    <string name="permissions_error">Permissions are required for core functionality</string>
+    <string name="ok">OK</string>
+    <string name="done">Done</string>
+    <string name="degree_celsius">%.2f Celsius</string>
+
 </resources>

@@ -71,6 +71,11 @@ dependencies {
     implementation(Deps.converterGson)
     implementation(Deps.loggingInterceptor)
 
+    // Room
+    implementation(Deps.roomRuntime)
+    kapt(Deps.roomCompiler)
+    implementation(Deps.roomKtx)
+
     // Dagger-Hilt
     implementation(Deps.hilt)
     kapt(Deps.hiltCompiler)
@@ -88,9 +93,6 @@ dependencies {
     // Chucker OkHttp Interceptor
     debugImplementation(Deps.chucker)
     releaseImplementation(Deps.chuckerNoOp)
-
-    // EncryptedSharedPreferences
-    implementation(Deps.encryptedSharedPreferences)
 
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

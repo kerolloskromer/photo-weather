@@ -7,7 +7,7 @@ object Versions {
     const val kotlin = "1.7.10"
 
     //Coroutines
-    const val coroutines = "1.3.5"
+    const val coroutines = "1.6.4"
 
     // UI
     const val core = "1.6.0"
@@ -16,8 +16,7 @@ object Versions {
     const val recyclerView = "1.2.1"
     const val constraintLayout = "2.1.0"
     const val fragment = "1.3.5"
-    const val circleimageview = "3.1.0"
-    const val coil = "1.3.2"
+    const val coil = "2.2.2"
 
     // Navigation
     const val navigation = "2.5.1"
@@ -53,9 +52,6 @@ object Versions {
 
     // Chucker OkHttp Interceptor
     const val chucker = "3.5.0"
-
-    // EncryptedSharedPreferences
-    const val encryptedSharedPreferences = "1.1.0-alpha03"
 
     // Google Location
     const val googleLocation = "20.0.0"

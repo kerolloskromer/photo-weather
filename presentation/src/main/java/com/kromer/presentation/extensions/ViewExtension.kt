@@ -48,13 +48,13 @@ fun View.inVisible(): View {
 
 fun View.showSnackBar(
     message: String,
-    retryActionName: String? = null,
+    actionName: String? = null,
     action: (() -> Unit)? = null
 ) {
-    val snackBar = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
+    val snackBar = Snackbar.make(this, message, Snackbar.LENGTH_INDEFINITE)
 
     action?.let {
-        snackBar.setAction(retryActionName) {
+        snackBar.setAction(actionName) {
             it()
         }
     }

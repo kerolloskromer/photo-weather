@@ -1,5 +1,6 @@
 package com.kromer.photoweather.di.features.weather
 
+import com.kromer.domain.features.location.usecases.GetLocationUseCase
 import com.kromer.domain.features.weather.repository.WeatherRepository
 import com.kromer.domain.features.weather.usecases.GetWeatherUseCase
 import dagger.Module
@@ -15,6 +16,7 @@ object DomainModule {
     @Provides
     @Singleton
     fun provideGetWeatherUseCase(
-        repository: WeatherRepository
-    ): GetWeatherUseCase = GetWeatherUseCase(repository)
+        repository: WeatherRepository,
+        getLocationUseCase: GetLocationUseCase,
+    ): GetWeatherUseCase = GetWeatherUseCase(repository, getLocationUseCase)
 }

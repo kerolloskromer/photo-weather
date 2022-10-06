@@ -45,7 +45,6 @@ dependencies {
     implementation(Deps.recyclerView)
     implementation(Deps.constraintLayout)
     implementation(Deps.fragment)
-    implementation(Deps.circleimageview)
     implementation(Deps.coil)
 
     // Navigation
