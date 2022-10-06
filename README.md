@@ -15,6 +15,7 @@
   - Room for database
   - Timber - for logs.
   - Mockito and JUnit - for Unit tests
+  - Gradle Kotlin DSL
  
 ## Architecture:
   - Clean Architecture (Data - Domain - Presentation)
