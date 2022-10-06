@@ -17,9 +17,10 @@
   - Mockito and JUnit - for Unit tests
  
 ## Architecture:
+  - Clean Architecture (Data - Domain - Presentation)
   - MVVM Architecture 
-  - Repository pattern
-  - Applying SOLID principles, each class has a single job with separation of concerns by making classes independent of each other and communicating with interfaces.
+  - Repository Pattern
+  - SOLID Principles
 
 ## Features
 + Capture photo with camera
